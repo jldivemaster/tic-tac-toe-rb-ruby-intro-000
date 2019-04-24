@@ -134,7 +134,8 @@ end
 
 
 def play(board)
-
+  board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  
   until over?(board)
     turn(board)
   end
