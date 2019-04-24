@@ -11,8 +11,8 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index, current_player)
-  board[index] = current_player
+def move(board, index)
+  board[index] = current_player(board)
 end
 
 def position_taken?(board, location)
@@ -32,6 +32,7 @@ def turn(board)
     move(board, index)
     display_board(board)
   else
+    puts "Invalid Move"
     turn(board)
   end
 end
@@ -137,9 +138,9 @@ end
 def play(board)
   #board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-  #until over?(board)
-  #  turn(board)
-  #end
+  until over?(board)
+    turn(board)
+  end
 
   #if over?(board) && winner(board) == "X"
 #    puts "Congratulations, Player X!"
