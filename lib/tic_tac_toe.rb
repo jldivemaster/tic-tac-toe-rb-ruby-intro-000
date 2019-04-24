@@ -149,9 +149,9 @@ def play(board)
   end
 
   if over?(board) && winner(board) == "X"
-    puts "Congratulations, Player X!"
+    puts "Congratulations X!"
   elsif over?(board) && winner(board) == "O"
-    puts "Congratulations, Player O!"
+    puts "Congratulations O!"
   elsif draw?(board)
     puts "Cat's Game!"
   end
