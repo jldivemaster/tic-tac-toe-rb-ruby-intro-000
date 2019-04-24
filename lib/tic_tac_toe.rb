@@ -11,7 +11,7 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index)
+def move(board, index, current_player)
   board[index] = current_player(board)
 end
 
@@ -29,7 +29,7 @@ def turn(board)
   index = (input.to_i - 1)
 
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index, current_player)
     display_board(board)
   else
     puts "Invalid Move"
@@ -49,7 +49,7 @@ end
 
 
 def current_player(board)
-  turn_count(board) % 2 == 0 ? "X" : "O"
+  token = turn_count(board) % 2 == 0 ? "X" : "O"
 end
 
 # Define your WIN_COMBINATIONS constant
