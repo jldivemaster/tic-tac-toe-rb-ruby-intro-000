@@ -38,7 +38,7 @@ def turn(board)
 end
 
 def turn_count(board)
-  count = 1
+  count = 0
   board.each do |ele|
     if (ele == "X") || (ele == "O")
       count += 1
