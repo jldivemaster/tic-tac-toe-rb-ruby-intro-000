@@ -134,9 +134,9 @@ end
 
 
 def play(board)
-  #board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-  #input = gets
+  while !(over?(board))
+    turn(board)
+  end
 
-  turn(board)
-
+  
 end
