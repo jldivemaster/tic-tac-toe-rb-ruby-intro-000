@@ -7,62 +7,33 @@ def display_board(board)
 end
 
 
-def input_to_index(position)
-  index = (position.to_i) - 1
-  return index
+def input_to_index(user_input)
+  user_input.to_i - 1
 end
 
-
-def move( board, index, token )
-
-  board[index] = token
-  return board
+def move(board, index, current_player = "X")
+  board[index] = current_player
 end
 
-
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
+def position_taken?(board, location)
+  board[location] != " " && board[location] != ""
 end
-
 
 def valid_move?(board, index)
-  if !(0..8).include?(index)
-    return false
-  end
-
-  if (board[index] == "X") || (board[index] == "O")
-    return false
-  end
-
-  if ((0..8).include?(index)) && ((board[index] == " ") || (board[index] == "") || (board[index] == nil))
-    return true
-  end
+  index.between?(0,8) && !position_taken?(board, index)
 end
-
 
 def turn(board)
-  invalid_input = true
-
-  while invalid_input
-    invalid_input = false
-    puts "Please enter 1-9:"
-    input = gets.strip
-
-    if !(1..9).include?(input.to_i)
-      puts "Invalid Move."
-      invalid_input = true
-    else
-      index = input_to_index(input)
-      if valid_move?(board, index)
-        move(board, index, token = "X")
-        display_board(board)
-      else
-        invalid_input = true
-      end
-    end
+  puts "Please enter 1-9:"
+  input = gets.strip
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
   end
 end
-
 
 def turn_count(board)
   count = 0
