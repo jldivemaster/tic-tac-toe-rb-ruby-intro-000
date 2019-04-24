@@ -134,9 +134,17 @@ end
 
 
 def play(board)
-  while !(over?(board))
+  if !(over?(board))
     turn(board)
+  elsif over?(board) && winner(board) == "X"
+    puts "Congratulations, Player X!"
+  elsif over?(board) && winner(board) == "O"
+    puts "Congratulations, Player O!"
+  elsif draw?(board)
+    puts "Cat's Game!"
   end
+
+  
 
 
 end
